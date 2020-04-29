@@ -2,6 +2,7 @@
 #include "switches.h"
 #include "led.h"
 #include "buzzer.h"
+#include "screen.h"
 
 char switch_state_changed;
 
@@ -47,10 +48,12 @@ void switch_interrupt_handler()
   switch(cur_state) {
   case 1:
     setGreen();
+    drawState1();
     break;
   case 2:
     setGreen();
     setRed();
+    drawState2();
     buzzer_set_period(1000);
     break;
   case 3:
